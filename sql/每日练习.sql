@@ -56,3 +56,19 @@ select cno,course.CNAME from course
 	select sc.CNO from sc,students
 	where students.SNAME='李强' and sc.SNO=students.SNO
  )
+ 
+ --检索选修不少于3门课程的学生学号(SNO)
+select sc.SNO  from sc
+group by sc.SNO having COUNT(*)>=3
+
+  --检索选修全部课程的学生姓名(SNAME)
+  select students.SNAME from students
+  where not exists(
+	select * from course
+	where not exists
+	(
+		select * from sc
+		where course.CNO=sc.CNO and students.SNO=sc.SNO
+	)
+  )
+   
