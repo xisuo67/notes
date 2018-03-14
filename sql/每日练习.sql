@@ -72,3 +72,10 @@ group by sc.SNO having COUNT(*)>=3
 	)
   )
    
+   --检索不学"编译原理"的学生信息
+   select * from students
+   where students.SNO not in 
+   (
+	  select sc.sno from sc,course  
+      where course.cno=sc.cno and course.CNAME='编译原理'
+   )
