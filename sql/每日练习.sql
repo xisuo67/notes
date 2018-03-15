@@ -8,6 +8,9 @@
      SEX  char(2) check(sex='男' or sex='女') not null   
  );  
  insert into students values('1','李强',23,'男');  
+ insert into students values('3','李强1',24,'女');
+ insert into students values('4','李强2',28,'女');
+ insert into students values('6','李强3',29,'男');
  insert into students values('2','刘丽',22,'女');  
  insert into students values('5','张友',22,'男');  
 
@@ -17,9 +20,11 @@
      CNAME varchar(20) ,  
      TEACHER varchar(20),  
  );  
- insert into course values('K1','C语言','王华');  
- insert into course values('K5','数据库原理','程军');  
- insert into course values('K8','编译原理','程军');  
+insert into course values('K1','C语言','王华');  
+insert into course values('K2','C++语言','王强'); 
+insert into course values('K3','Java语言','王宝强')
+insert into course values('K5','数据库原理','程军');  
+insert into course values('K8','编译原理','程军');  
    
  create table  sc  
  (  
@@ -79,3 +84,63 @@ group by sc.SNO having COUNT(*)>=3
 	  select sc.sno from sc,course  
       where course.cno=sc.cno and course.CNAME='编译原理'
    )
+   
+   --查询“程军”老师所教授的所有课程
+   select * from course
+   where course.TEACHER='程军'
+   
+   --查询“张友”同学所有课程的成绩
+--方法一:
+select a.SCORE,a.CNO,b.CNAME from sc  a
+left join course b 
+on b.CNO=a.CNO
+left join students c
+on  c.SNO=a.SNO where c.SNAME='张友' 
+--方法二:
+
+select a.SCORE,a.CNO,b.CNAME from course b
+left join 
+(select Score,sc.CNO from students,sc
+where students.SNAME='张友' and students.SNO=sc.SNO) a
+on a.CNO=b.CNO
+
+--方法三:
+
+select Score,sc.CNO,course.CNAME from students,sc,course
+where students.SNO=sc.SNO and students.SNAME='张友' and course.CNO=sc.CNO
+
+--查询课程名为“C语言”的平均成绩
+--方法一:
+select avg(sc.SCORE) as score from sc,course
+where course.CNAME='C语言' and course.CNO=sc.CNO
+--方法二:
+select course.CNAME, AVG(sc.SCORE) as score from sc,course
+where course.CNO=sc.CNO and course.CNAME='C语言' group by course.CNAME
+
+--查询选修了所有课程的同学信息
+
+select * from students
+where not exists
+(
+	select * from course
+	where not exists
+	(
+		select * from sc
+		where course.CNO=sc.CNO and students.SNO=sc.SNO
+	)
+)
+--检索王老师所授课程的课程号和课程名
+
+select * from course where TEACHER like '王%'
+--检索年龄大于23岁的男学生的学号和姓名
+
+select students.SNO,students.SNAME from students where SEX='男' and AGE>=23
+
+--检索至少选修王老师所授课程中一门课程的女学生姓名
+
+select students.SNAME from students
+where students.SEX='女' and students.SNO in 
+(
+	select sc.SNO from sc,course
+	where sc.CNO=course.CNO and course.TEACHER like '王%'
+)
