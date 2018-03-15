@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vue入门练习组件化demo3</title>
+	<script src="../src/vue.min.js"></script>
+</head>
+<body>
+<div id="app">
+	<message content='Hello world'></message>
+</div>
+<script type="text/javascript">
+	var Message=Vue.extend({
+		props:['content'],
+		template:'<h1>{{content}}</h1>'
+	});
+	Vue.component('message',Message);
+	var vm=new Vue({
+		el:'#app',
+	});
+</script>
+</body>
+</html>
