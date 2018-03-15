@@ -2,9 +2,20 @@
 <html>
 <head>
 	<title>Vue入门demo2</title>
-	<scrip src='../src/vue.min.js'></scrip>
+	<script src='../src/vue.min.js'></script>
 </head>
 <body>
-	
+<div id="app">
+	<h1>Your input is {{message}}</h1>
+	<input type="text" v-model="message">
+</div>
+<script type="text/javascript">
+	var vm=new Vue({
+		el:'#app',
+		data:{
+			message:'Hello world'
+		}
+	});
+</script>
 </body>
 </html>
