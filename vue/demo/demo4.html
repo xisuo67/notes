@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vue入门练习demo4模板</title>
+	<script src="../src/vue.min.js"></script>
+</head>
+<body>
+<div id="app">
+	<p>123</p>
+</div>
+<script id="tp1" type="x-template">
+	<div class="tp1">
+		<p>This is a tp1 from script tag</P>
+	</div>
+</script>
+<script type="text/javascript">
+	var vm=new Vue({
+		el:'#app',
+		template:'#tp1',
+	});
+</script>
+</body>
+</html>
