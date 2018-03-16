@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vue入门练习demo7(钩子函数详解及应用)</title>
+	<script src="../src/vue.min.js"></script>
+</head>
+<body>
+<div id="app"></div>
+<script type="text/javascript">
+	var vm=new Vue({
+		el:'#app',
+		beforeCreate:function(){
+			console.log('beforeCreate');
+		},
+		created:function(){
+			console.log('created');
+		},
+		beforeComile:function(){
+			console.log('beforeComile');
+		},
+		attached:function(){
+			console.log('attached');
+		},
+		dettached:function(){
+			console.log('dettached');
+		},
+		beforeDestroy:function(){
+			console.log('beforeDestroy');
+		},
+		destroyed:function(){
+			console.log	('destroyed');
+		},
+		ready:function(){
+			console.log('ready');
+			//组件完成后调用$destory()函数，进行销毁
+			this.$destory();
+		}
+	});
+</script>
+</body>
+</html>
+
+<!--钩子函数说明：
+1、init:在是离开时初始化时同步调用。此时数据观测、事件方法等都尚未初始化。2.0中更名为beforeCreate
+2、created:在实例创建之后调用。此时已完成数据绑定、事件方法，但尚未开始DOM编译，即未挂载到document中
+3、beforeCompile:在DOM编译前调用，2.0废弃了该方法，推荐使用created
+4、beforeMount:2.0新增的生命周期钩子，在mounted之前运行
+5、compiled:在编译结束时调用。此时所有指令已生效，数据变化已能触发DOM更新，但不保证$el已插入文档。2.0中更名为mounted
+6、ready:在编译结束和$el第一次插入文档之后调用。2.0废弃了该方法，推荐使用mounted。这个变化其实已经改变了ready这个生命周期状态，
+相当于取消了在$el首次插入文档后的钩子函数。
+7、attached:在vm.$el插入DOM时调用，ready会在第一次attached后调用。操作$el必须使用指令或实例方法（例如$appendTo()）,直接操作vm.$el
+不会出发这个钩子，2.0废弃了该方法，推荐在其他苟子仲自定义方法检查时候已挂载。
+8、detached:同attached类似，该钩子在vm.$el从DOM删除时调用，而且必须是指令或实例方法。2.0中同样废弃了该方法
+9、beforeDestroy:在开始销毁实例时调用，此刻实例依然有效。
+10、destroyed:在实例被销毁后调用，此时所有绑定和实例指令都已经解绑，子实例也被销毁。
+11、beforeUpadate:2.0新增的生命周期钩子，在实例挂载之后，再次更新实例（例如更新data）时会调用该方法，此时尚未更新DOM结构
+12、updated:2.0新增的生命周期钩子，在实例挂载后，再次更新实例并更新完DOM结构后调用
+13、activated:2.0新增的生命周期钩子，需要配合动态组件keep-live 属性使用。在动态组件初始化渲染过程中调用该方法。
+14、deactivated:2.0新增的生命周期钩子，需要配合动态组件keep-live 属性使用。在动态组件移出的过程中调用该方法。-->

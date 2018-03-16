@@ -5,10 +5,21 @@
 	<script src="../src/vue.min.js"></script>
 </head>
 <body>
-<button v-on:click="alert">alert</button>
+<div id="app">
+	<button v-on:click="alert">alert</button>
+</div>
 <script type="text/javascript">
 	var vm=new Vue({
-		el:'#app'，
+		el:'#app',
+		data:{a:1},
+		methods:{
+			alert:function(){
+				alert(this.a);
+			}
+		},
+		created:function(){  <!--初始化狗子函数>
+			console.log('created');
+		},
 	});
 </script>
 </body>
