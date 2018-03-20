@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>数据绑定语法</title>
+	<script src="../src/vue.min.js"></script>
+</head>
+<body>
+<div id="app">
+	<span>
+		Hello {{name}}
+	</span>
+<div v-bind:id="'id-'+id">Hello y</div>  <!--两种写法均可-->
+<div :id="'id-'+id">Hello f</div>
+</div>
+<script type="text/javascript">
+	var vm=new Vue({
+		el:'#app',
+		data:{
+			id:1,
+			index:0,
+			name:'Vue',
+			avatar:'http://www.baidu.com',
+			count:[1,2,3,4,5],
+			names:['Vue1.0','Vue2.0'],
+			items:[{name:'Vue1.0',version:'1.0'},
+			{name:'Vue2.0',version:'2.0'}]
+		}
+	});
+</script>
+</body>
+</html>
