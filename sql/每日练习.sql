@@ -157,3 +157,7 @@ where CNO not in
 	and students.SNAME like '李%'
 )
 --检索至少选修两门课程的学生学号
+select sc.sno from sc group by sc.sno
+having( count(*)>=2)
+
+--检索全部学生都选修的课程的课程号与课程名
