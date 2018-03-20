@@ -141,6 +141,23 @@ select students.SNO,students.SNAME from students where SEX='男' and AGE>=23
 select students.SNAME from students
 where students.SEX='女' and students.SNO in 
 (
-	select sc.SNO from sc,course
+	select distinct sc.SNO from sc,course
 	where sc.CNO=course.CNO and course.TEACHER like '王%'
 )
+select * from students
+select * from sc
+select * from course
+delete from students where SNO in (3,4,6)
+--检索李同学不学的课程的课程号
+select cno,course.CNAME from course
+where CNO not in 
+(
+	select CNO from students,sc
+	where students.SNO=sc.SNO
+	and students.SNAME like '李%'
+)
+--检索至少选修两门课程的学生学号
+select sc.sno from sc group by sc.sno
+having( count(*)>=2)
+
+--检索全部学生都选修的课程的课程号与课程名
