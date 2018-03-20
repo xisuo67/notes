@@ -11,6 +11,16 @@
 	</span>
 <div v-bind:id="'id-'+id">Hello y</div>  <!--两种写法均可-->
 <div :id="'id-'+id">Hello f</div>
+<div>{{index+1}}</div>
+<div>{{index==0?'a':'b'}}</div>
+<div>{{name.split('').join('|')}}</div>
+<div>过滤器：{{name|uppercase}}</div>
+<div>{{name|filterA|filterB}}</div>
+<div></div>
+
+
+
+
 </div>
 <script type="text/javascript">
 	var vm=new Vue({
