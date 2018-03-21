@@ -161,3 +161,8 @@ select sc.sno from sc group by sc.sno
 having( count(*)>=2)
 
 --检索全部学生都选修的课程的课程号与课程名
+select course.CNO,course.CNAME from course
+where course.CNO in (
+	select sc.CNO from sc
+	group by CNO having count(*)=(select COUNT(*) from students)
+)
