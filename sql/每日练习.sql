@@ -188,11 +188,6 @@ select COUNT(*) Number from
 --方法二
 select COUNT(*) as number from(select distinct sc.CNO from sc
 group by sc.CNO) a
-
-
-select * from students
-select * from sc
-select * from course
 --求选修K1课程的学生的平均年龄。
 --方法一
 select AVG(students.AGE) as avgAge from students,sc
@@ -211,3 +206,20 @@ left join sc on sc.SNO=students.SNO and sc.CNO='K1'
 select AVG(students.AGE) as avgAge from students
 left join sc on sc.SNO=students.SNO where sc.CNO='K1'
 
+--求王老师所授课程的每门课程的学生平均成绩。
+use test
+select * from students
+select * from sc
+select * from course
+--方法一
+
+
+--方法二
+select a.AvgScore,a.CNO,course.CNAME from course,(
+select sc.CNO,AVG(sc.SCORE) as AvgScore from sc
+where sc.CNO in 
+(
+	select course.CNO from course
+	where course.TEACHER='王华'
+)
+group by sc.CNO) a where a.CNO=course.CNO
