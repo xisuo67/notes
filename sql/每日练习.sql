@@ -166,3 +166,28 @@ where course.CNO in (
 	select sc.CNO from sc
 	group by CNO having count(*)=(select COUNT(*) from students)
 )
+--检索选修课程包含王老师所授课的学生学号
+--方法一
+select students.SNAME,students.SNO from students
+where students.SNO in(
+	select sc.SNO from sc,course where sc.CNO=course.CNO
+	and course.TEACHER like '王%'
+)
+--方法二:
+ SELECT DISTINCT sno FROM sc  
+ WHERE cno IN  
+ (  
+      SELECT cno FROM course  
+     WHERE teacher LIKE '王%'  
+);  
+
+--统计有学生选修的课程门数
+--方法一
+select COUNT(*) Number from 
+(
+	select distinct sc.CNO from sc
+	group by sc.CNO
+) as bb
+--方法二
+select COUNT(*) as number from(select distinct sc.CNO from sc
+group by sc.CNO) a
