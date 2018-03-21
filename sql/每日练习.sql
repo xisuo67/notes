@@ -144,9 +144,6 @@ where students.SEX='女' and students.SNO in
 	select distinct sc.SNO from sc,course
 	where sc.CNO=course.CNO and course.TEACHER like '王%'
 )
-select * from students
-select * from sc
-select * from course
 delete from students where SNO in (3,4,6)
 --检索李同学不学的课程的课程号
 select cno,course.CNAME from course
@@ -191,3 +188,26 @@ select COUNT(*) Number from
 --方法二
 select COUNT(*) as number from(select distinct sc.CNO from sc
 group by sc.CNO) a
+
+
+select * from students
+select * from sc
+select * from course
+--求选修K1课程的学生的平均年龄。
+--方法一
+select AVG(students.AGE) as avgAge from students,sc
+where students.SNO=sc.SNO and sc.CNO='K1'
+--方法二
+select AVG(students.AGE) as avgAge from students
+where students.SNO in(
+	select SNO from sc 
+	where CNO='K1'
+)
+--方法三
+select AVG(students.AGE) as AvgAge from students
+left join sc on sc.SNO=students.SNO and sc.CNO='K1'
+
+--方法四
+select AVG(students.AGE) as avgAge from students
+left join sc on sc.SNO=students.SNO where sc.CNO='K1'
+
