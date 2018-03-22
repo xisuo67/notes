@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>表单控件</title>
+			<script src="../src/vue.min.js"></script>
+</head>
+<body>
+	<div id="app">
+		<input type="text" v-model="message"/>
+		<span>Your input is :{{message}}</span>
+		<label><input type="radio" value="male" v-model="gender">男</label>
+		<label><input type="radio" value="female" v-model="gender">女</label>
+		<p>{{gender}}</p>
+	</div>
+
+		<script type="text/javascript">
+			var vm=new Vue({
+				el:"#app",
+				data:{
+					message:'',
+					gender:'',
+					multiChecked:[],
+					selected:'',
+					multiSelected:[],
+				a:'checked',
+				b:'checked',
+				},
+			});
+		</script>
+</body>
+</html>
