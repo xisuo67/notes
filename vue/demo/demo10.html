@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Setter方法的使用</title>
+</head>
+<body>
+	<div id="app">
+		<p>&yen;{{price}}</p>
+	</div>
+	<script src="../src/vue.min.js"></script>
+	<script type="text/javascript">
+		var vm=new Vue({
+			el:"#app",
+			data:{cents:100},
+			computed:{
+				price:{
+					set:function(newValue){
+						this.cents=newValue*100;
+					},
+					get:function(){
+						return (this.cents/100).toFixed(2);
+					}
+				}
+			}
+		});
+	</script>
+</body>
+</html>
