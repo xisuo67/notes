@@ -207,10 +207,6 @@ select AVG(students.AGE) as avgAge from students
 left join sc on sc.SNO=students.SNO where sc.CNO='K1'
 
 --求王老师所授课程的每门课程的学生平均成绩。
-use test
-select * from students
-select * from sc
-select * from course
 --方法一
 select course.CNO,course.CNAME, AVG(Score) from course,sc
 where sc.CNO=course.CNO and course.TEACHER='王华'
@@ -225,3 +221,19 @@ where sc.CNO in
 )
 group by sc.CNO) a where a.CNO=course.CNO
 --方法三
+select course.CNO,AVG(sc.SCORE),course.CNAME
+from course left join 
+sc on course.CNO=sc.CNO where course.TEACHER='王华'
+group by course.CNO,course.CNAME
+--统计每门课程的学生选修人数（超过2人的课程才统计）。要求输出课程号和选修人数，查询结果按人数降序排列，若人数相同，按课程号升序排列。
+select a.cno,a.nums from(
+	select cno,COUNT(*)as nums from sc
+	group by CNO having(COUNT(*)>=2)
+) a
+order by a.nums desc,a.cno asc
+
+use test
+select * from students
+select * from sc
+select * from course
+--检索学号比李同学大，而年龄比他小的学生姓名。
