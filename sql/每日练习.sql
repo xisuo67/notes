@@ -212,8 +212,9 @@ select * from students
 select * from sc
 select * from course
 --方法一
-
-
+select course.CNO,course.CNAME, AVG(Score) from course,sc
+where sc.CNO=course.CNO and course.TEACHER='王华'
+group by course.CNO,course.CNAME
 --方法二
 select a.AvgScore,a.CNO,course.CNAME from course,(
 select sc.CNO,AVG(sc.SCORE) as AvgScore from sc
@@ -223,3 +224,4 @@ where sc.CNO in
 	where course.TEACHER='王华'
 )
 group by sc.CNO) a where a.CNO=course.CNO
+--方法三
