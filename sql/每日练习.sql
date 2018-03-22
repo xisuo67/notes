@@ -144,9 +144,6 @@ where students.SEX='女' and students.SNO in
 	select distinct sc.SNO from sc,course
 	where sc.CNO=course.CNO and course.TEACHER like '王%'
 )
-select * from students
-select * from sc
-select * from course
 delete from students where SNO in (3,4,6)
 --检索李同学不学的课程的课程号
 select cno,course.CNAME from course
@@ -161,3 +158,98 @@ select sc.sno from sc group by sc.sno
 having( count(*)>=2)
 
 --检索全部学生都选修的课程的课程号与课程名
+select course.CNO,course.CNAME from course
+where course.CNO in (
+	select sc.CNO from sc
+	group by CNO having count(*)=(select COUNT(*) from students)
+)
+--检索选修课程包含王老师所授课的学生学号
+--方法一
+select students.SNAME,students.SNO from students
+where students.SNO in(
+	select sc.SNO from sc,course where sc.CNO=course.CNO
+	and course.TEACHER like '王%'
+)
+--方法二:
+ SELECT DISTINCT sno FROM sc  
+ WHERE cno IN  
+ (  
+      SELECT cno FROM course  
+     WHERE teacher LIKE '王%'  
+);  
+
+--统计有学生选修的课程门数
+--方法一
+select COUNT(*) Number from 
+(
+	select distinct sc.CNO from sc
+	group by sc.CNO
+) as bb
+--方法二
+select COUNT(*) as number from(select distinct sc.CNO from sc
+group by sc.CNO) a
+--求选修K1课程的学生的平均年龄。
+--方法一
+select AVG(students.AGE) as avgAge from students,sc
+where students.SNO=sc.SNO and sc.CNO='K1'
+--方法二
+select AVG(students.AGE) as avgAge from students
+where students.SNO in(
+	select SNO from sc 
+	where CNO='K1'
+)
+--方法三
+select AVG(students.AGE) as AvgAge from students
+left join sc on sc.SNO=students.SNO and sc.CNO='K1'
+
+--方法四
+select AVG(students.AGE) as avgAge from students
+left join sc on sc.SNO=students.SNO where sc.CNO='K1'
+
+--求王老师所授课程的每门课程的学生平均成绩。
+--方法一
+select course.CNO,course.CNAME, AVG(Score) from course,sc
+where sc.CNO=course.CNO and course.TEACHER='王华'
+group by course.CNO,course.CNAME
+--方法二
+select a.AvgScore,a.CNO,course.CNAME from course,(
+select sc.CNO,AVG(sc.SCORE) as AvgScore from sc
+where sc.CNO in 
+(
+	select course.CNO from course
+	where course.TEACHER='王华'
+)
+group by sc.CNO) a where a.CNO=course.CNO
+--方法三
+select course.CNO,AVG(sc.SCORE),course.CNAME
+from course left join 
+sc on course.CNO=sc.CNO where course.TEACHER='王华'
+group by course.CNO,course.CNAME
+--统计每门课程的学生选修人数（超过2人的课程才统计）。要求输出课程号和选修人数，查询结果按人数降序排列，若人数相同，按课程号升序排列。
+select a.cno,a.nums from(
+	select cno,COUNT(*)as nums from sc
+	group by CNO having(COUNT(*)>=2)
+) a
+order by a.nums desc,a.cno asc
+
+use test
+select * from students
+select * from sc
+select * from course
+--检索学号比李同学大，而年龄比他小的学生姓名。
+select students.SNAME 
+from students,
+(
+	select students.Age,students.SNO from students
+	where students.SNAME='李%'
+) a
+where (a.SNO>students.SNO) and (students.AGE>a.AGE)
+
+ SELECT stu1.sname   
+ FROM students stu1,  
+ (  
+     SELECT max(sno) snoLi,min(age) ageLi FROM students   
+     WHERE sname LIKE '李%'  
+ ) AS stuLi  
+ WHERE (stu1.age < stuLi.ageLi) AND (stu1.sno>stuLi.snoLi)  
+ ;   
