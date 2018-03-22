@@ -237,3 +237,19 @@ select * from students
 select * from sc
 select * from course
 --检索学号比李同学大，而年龄比他小的学生姓名。
+select students.SNAME 
+from students,
+(
+	select students.Age,students.SNO from students
+	where students.SNAME='李%'
+) a
+where (a.SNO>students.SNO) and (students.AGE>a.AGE)
+
+ SELECT stu1.sname   
+ FROM students stu1,  
+ (  
+     SELECT max(sno) snoLi,min(age) ageLi FROM students   
+     WHERE sname LIKE '李%'  
+ ) AS stuLi  
+ WHERE (stu1.age < stuLi.ageLi) AND (stu1.sno>stuLi.snoLi)  
+ ;   
