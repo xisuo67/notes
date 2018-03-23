@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>V-Show</title>
+</head>
+<body>
+	<div id="app">
+		<div v-show="show">show</div>
+		<div v-if="show">me</div>
+		<div v-else>hidden</div>
+	</div>
+	<script src="../src/vue.min.js"></script>
+	<script type="text/javascript">
+		var vm=new Vue({
+			el:'#app',
+			data:{
+				show:true,
+			},
+		});
+	</script>
+</body>
+</html>
