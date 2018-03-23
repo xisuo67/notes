@@ -284,4 +284,4 @@ where a.SEX='ÄÐ' and a.AGE>
 (
 	select MAX(b.age) as MaxAge from students b
 	where b.SEX='Å®'
-)
+) 
