@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>修饰符</title>
+</head>
+<body>
+	<div id="app">
+		<a v-on:click.stop='doThis'>doThis</a>
+		<form v-on:submit.prevent="onSubmit">
+			测试//阻止表单默认提交事件
+		</form>
+		<form v-on:submit.stop.prevent="onSubmit">//阻止默认提交事件阻止冒泡</form>
+		<form v-on:submit.stop.prevent>也可以有修饰符。并不绑定事件</form>
+		<div v-on:click="saySelf('click from inner')" v-on:click.self="saySelf('click from self')">
+		<button v-on:click="saySelf('buttion click')">buttion</button>
+		<buttion v-on:click.stop="saySelf('just button click')">click me</buttion>
+		</div>
+
+	</div>
+	<script src="../src/vue.min.js"></script>
+	<script type="text/javascript">
+		var vm=new Vue({
+			el:'#app',
+			methods:{
+				saySelf(msg){
+					alert(msg);
+				}
+			},
+		});
+	</script>
+
+
+</body>
+</html>
