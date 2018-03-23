@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>内联样式绑定</title>
+</head>
+<body>
+	<div id="app">
+		<div v-bind:style="alertStyle">测试</div>
+		<!--除了直接绑定对象外，也可以绑定单个属性或者直接使用字符串-->
+		<div v-bind:style="{fontSize:alertStyle.fontSize,color:'red'}">这是单个绑定及直接使用字符串</div>
+		<!--数组语法-->
+		<div v-bind:style="[styleObjectA,styleObjectB]">这是数组语法</div>
+	</div>
+	<script src="../src/vue.min.js"></script>
+	<script type="text/javascript">
+		var vm=new Vue({
+			el:"#app",
+			data:{
+				alertStyle:{
+					color:'red',
+					fontSize:'20px',
+				},
+				styleObjectA:{color:'green'},
+				styleObjectB:{fontSize:'40px'},
+			},
+		});
+	</script>
+</body>
+</html>
