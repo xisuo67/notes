@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>事件绑定与监听</title>
+</head>
+<body>
+	<div id="app">
+		<button v-on:click="say">Say</button>
+		<button @click='say'>click me</button>
+		<button v-on:click="sayFrom('from param')">click</button>
+		<button v-on:click="showEvent">Event</button>
+		<button v-on:click="showEvent($event)">showEvent</button>
+		<button @click='showEvent'>test</button>
+	</div>
+	<script src="../src/vue.min.js"></script>
+	<script type="text/javascript">
+		var vm=new Vue({
+			el:'#app',
+			data:{
+				msg:'Hello Vue.js'
+			},
+			methods:{
+				say:function(){
+					alert(this.msg);
+				},
+				sayFrom:function(from){
+					alert(this.msg+' '+from);
+				},
+				showEvent:function(event){
+					console.log(event);
+				}
+			},
+		});
+	</script>
+</body>
+</html>
