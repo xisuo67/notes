@@ -231,11 +231,6 @@ select a.cno,a.nums from(
 	group by CNO having(COUNT(*)>=2)
 ) a
 order by a.nums desc,a.cno asc
-
-use test
-select * from students
-select * from sc
-select * from course
 --检索学号比李同学大，而年龄比他小的学生姓名。
 --方法一：
 select students.SNAME 
@@ -254,3 +249,23 @@ where (a.SNO<students.SNO) and (students.AGE<a.AGE)
  ) AS stuLi  
  WHERE (stu1.age < stuLi.ageLi) AND (stu1.sno>stuLi.snoLi)  
  ;   
+--检索姓名以李打头的所有学生的姓名和年龄
+use test
+select * from students
+select * from sc
+select * from course
+
+select students.SNAME,students.AGE from students where students.SNAME like '李%'
+
+--在SC中检索成绩为空值的学生学号和课程号。
+select sc.SNO,sc.CNO from sc 
+where sc.SCORE is null
+
+--求年龄大于女同学平均年龄的男学生姓名和年龄。
+--方法一
+select students.SNAME,students.AGE from students,
+(select avg(students.AGE) as mailAge from students where students.SEX='女')a
+where students.AGE>a.mailAge and students.SEX='男'
+--方法二
+
+
