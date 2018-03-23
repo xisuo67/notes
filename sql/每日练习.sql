@@ -267,5 +267,21 @@ select students.SNAME,students.AGE from students,
 (select avg(students.AGE) as mailAge from students where students.SEX='女')a
 where students.AGE>a.mailAge and students.SEX='男'
 --方法二
+select sname,age from students a
+where a.SEX='男' and a.AGE>(
+	select AVG(b.age) from students b
+	where b.SEX='女'
+)
 
-
+--求年龄大于所有女同学年龄的男学生姓名和年龄。
+--方法一
+select a.sname,a.age from students a,
+(select MAX(b.age) as maxAge from students b where b.SEX='女') c
+where a.AGE>c.maxAge and a.SEX='男'
+--方法二
+select a.sname,a.age from students a
+where a.SEX='男' and a.AGE>
+(
+	select MAX(b.age) as MaxAge from students b
+	where b.SEX='女'
+)
