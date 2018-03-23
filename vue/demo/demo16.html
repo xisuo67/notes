@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>列表渲染</title>
+</head>
+<body>
+	<div id="app">
+		<ul>
+			<li v-for="(item,index) in items">
+				<h3>{{index}}-{{item.title}}</h3>
+				<p>{{item.description}}</p>
+			</li>
+		</ul>
+	</div>
+	<script src="../src/vue.min.js"></script>
+	<script type="text/javascript">
+		var vm=new Vue({
+			el:"#app",
+			data:{
+				items:[
+					{title:"hi boby",description:"my name is yangfan"},
+					{title:"this my test demo",description:"I want this demo can help you"},
+					{title:"Thank you",description:"See you next time"}
+				]
+			},
+		});
+	</script>
+</body>
+</html>
