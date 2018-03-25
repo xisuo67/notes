@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>params</title>
+</head>
+<body>
+	<div id="app">
+		<div v-my-advance-directive  v-bind:a="a"></div>
+	</div>
+	<script src="../src/vue.min.js"></script>
+	<script type="text/javascript">
+		Vue.directive('my-advance-directive',{
+			params:['a'],
+			paramWatchers:{
+				a:function(val,oldVal){
+					console.log('watcher',vla,oldVal);
+				},
+			},
+			bind:function(){
+				console.log('params',this.params);
+			},
+		})
+		var vm=new Vue({
+			el:'#app',
+			data:{
+				a:'dynamitc data',
+			}
+		});
+	</script>
+</body>
+</html>
