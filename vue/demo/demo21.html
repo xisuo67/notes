@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>v-text</title>
+</head>
+<body>
+	<div id="app">
+		<span v-text="msg"></span>
+	</div>
+	<script src="../src/vue.min.js"></script>
+	<script type="text/javascript">
+		var vm=new Vue({
+			el:'#app',
+			data:{
+				msg:"test",
+			},
+		});
+	</script>
+</body>
+</html>
