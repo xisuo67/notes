@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>v-bind的使用</title>
+</head>
+<body>
+	<div id="app">
+		<img v-bind:src='avatar'>
+		<img :src="avatar">
+	</div>
+	<script src="../src/vue.min.js"></script>
+	<script type="text/javascript">
+		var vm=new Vue({
+			el:'#app',
+			data:{
+				avatar:"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1521963510668&di=20c6d7284864dfed4d30e91f390506ea&imgtype=0&src=http%3A%2F%2Fdynamic-image.yesky.com%2F740x-%2FuploadImages%2F2015%2F131%2F33%2FD472XQ25C7H2.jpg"
+			},
+		});
+	</script>
+</body>
+</html>
