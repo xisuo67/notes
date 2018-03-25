@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>过滤器的使用</title>
+</head>
+<body>
+	<div id="app">
+		<div>{{date|date 'yyy-MM-dd hh:mm:ss'}}</div>
+	</div>
+	<script src="../src/vue.min.js"></script>
+	<script type="text/javascript">
+		var vm=new Vue({
+			el:'#app',
+			data:{
+				date:new Date(),
+			},
+		});
+	</script>
+</body>
+</html>
