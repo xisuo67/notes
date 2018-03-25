@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Css过渡的用法</title>
+	<style type="text/css"> 
+		.my-startup{
+			transition:all is ease;
+			width:100px;height:100px;
+			background:black;
+			opactiy:1;
+		};
+	</style>
+</head>
+<body>
+	<div id="app">
+		<div v-if="show" class="my-startup">1231231</div>
+	</div>
+		<script src="../src/vue.min.js"></script>
+		<script type="text/javascript">
+			var vm=new Vue({
+				el:'#app',
+				data:{
+					show:false,
+				}
+			});
+		</script>
+</body>
+</html>
