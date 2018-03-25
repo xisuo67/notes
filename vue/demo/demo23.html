@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>指令实例属性</title>
+</head>
+<body>
+	<div id="app">
+		<div v-my-msg:console.log="content"></div>
+	</div>
+	<script src="../src/vue.min.js"></script>
+	<script type="text/javascript">
+		Vue.directive('my-msg',{
+			bind:function(){
+				console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~~bind~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~');
+				console.log('el',this.el);
+				console.log	('name',this.name);
+				console.log('vm',this.vm);
+				console.log('expression',this.expression);
+				console.log('arg',this.arg);
+				console.log('modeifiers',this.modeifiers);
+				console.log('descriptor',this.descriptor);
+			},
+			update:function(newValue,oldValue){
+				var keys=Object.keys(this.modeifiers);
+				window[this.arg][keys[0]](newValue);
+			},
+			unbind:function(){
+
+			},
+		});
+		var vm=new Vue({
+			el:'#app',
+			data:{
+				content:'there is the content'
+			}
+		});
+	</script>
+</body>
+</html>
