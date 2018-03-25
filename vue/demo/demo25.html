@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>twoWay用法</title>
+</head>
+<body>
+	<div id="app">
+		<div v-my-directive="i++">123</div>
+	</div>
+	<script src="../src/vue.min.js"></script>
+	<script type="text/javascript">
+		Vue.directive('my-directiv',{
+			acceptStatement:true,
+			update:function(fn){
+				console.log(fn);
+			}
+		});
+		var vm=new Vue({
+			el:'#app',
+			data:{
+				i:0
+			},
+		});
+	</script>
+</body>
+</html>
