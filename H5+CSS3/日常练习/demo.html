@@ -4,202 +4,223 @@
 	<meta charset="UTF-8">
 	<title>H5入门练习</title>
 	<style>
-		body{
-			margin:0;   /*设置body的外边距为0*/
-			padding:0;  /*设置body的内边距为0*/
-		}
-		div{
-			position:absolute; /*给所有div设置绝对定位*/
-		}
-		/*给类名为bg的元素设置宽、高、背景颜色*/
-		.bg{
-			width:800px;
-			height:600px;
-			background: #f2f2f2;
-			overflow:hidden;/*隐藏内容溢出*/
-		}
-		.beam{
-			width:1600px;/*宽度为1600px*/
-			height:20px;
-			background: #fff;
-			top:290px;/*绝对定位，距离父元素上边线290px*/
-			left:-400px;/*绝对定位，距父元素左边线-400px*/
-		}
-		.d_shield1,.d_shield2,.d_shield3,.d_shield4,.d_shield5,.d_shield6,.d_shield7
-		{
-			background:#e15016;
-		}
-		.d_shield1{
-			left:32px;
-			width:140px;
-			height:346px;
-		}
-		.d_shield2{
-			transform:skewx(5deg);/*变形，水平方向斜切5度*/
-			left:16px;
-			width:100px;
-			height: 346px;
-		}
-		.d_shield3{
-			transform:skewy(15deg);/*垂直方向斜切15度*/
-			top:265px;
-			left:32px;
-			width:140px;
-			height: 100px;
-		}
-		.d_shield4{
-			left:172px;
-			width:140px;
-			height:346px;
-		}
-		.d_shield5{
-			transform: skewx(-5deg);
-			left:227px;
-			width:100px;
-			height:346px;
-		}
-		.d_shield6{
-			transform:skewY(-15deg);
-			top:265px;
-			left:172px;
-			width:140px;
-			height:100px;
-		}
-		.d_shield7{
-			height:20px;
-			top:199px;
-			width: 80px;
-			left:60px;
-		}
-		.l_shield1,.l_shield2,.l_shield3,.l_shield4{
-			background: #ee6812;
-		}
-		.l_shield1{
-			left:172px;
-			width:140px;
-			height:346px;
-		}
-		.l_shield2{
-			transform: skewX(-5deg);
-			left:227px;
-			width:100px;
-			height: 363px;
-		}
-		.l_shield3{
-			transform: skewY(-15deg);
-			top:282px;
-			left:172px;
-			width:138px;
-			height: 100px
-		}
-		.l_shield4{
-			height:43px;
-			top:113px;
-			width:100px;
-			left:180px;
-		}
-		.gray1,.gray2,.gray3,.gray4{
-			background: #ebebeb;
-		}
-		.gray1{
-			height:43px;
-			width:102px;
-			left:70px;
-			top:70px;
-		}
-		.gray2{
-			width:46px;
-			height:216px;
-			transform: skewX(5deg);
-			top:70px;
-			left:75px;
-		}
-		.gray3{
-			width:95px;
-			height: 43;
-			left:77px;
-			top:156px;
-		}
-		.gray4{
-			width:87px;
-			height: 47px;
-			left:85px;
-			top:251px;
-			transform: skewY(15deg);
-		}
-		.white1{
-			width:102px;
-			height: 43px;
-			left:172px;
-			top:70px;
-		}
-		.white2{
-			width: 46px;
-			height: 216px;
-			transform: skewX(-5deg);
-			top:70px;
-			left:223px;
-		}
-		.white3{
-			height: 43px;
-			width:95px;
-			left:172px;
-			top:156px;
-		}
-		.white4{
-			height: 47px;
-			width:87px;
-			left:172px;
-			top:251px;
-			transform: skewY(-15deg);
-		}
+		 body {
+            margin: 0; /*设置body的外边距为0*/
+            padding: 0; /*设置body的内边距为0*/
+        }
+
+        div {
+            position: absolute; /*给所有的div设置绝对定位*/
+        }
+        /*给类名为bg的元素设置宽，高，背景色*/
+        .bg {
+            width: 800px;
+            height: 600px;
+            background: #f2f2f2;
+            overflow: hidden; /*隐藏内容溢出*/
+        }
+        /*给类名为beam的元素设置宽高，背景色及绝对定位*/
+        .beam {
+            width: 1600px;
+            height: 20px;
+            background: #fff; /*白色*/
+            top: 290px; /*绝对定位，距离父元素边上线290px*/
+            left: -400px; /*绝对定位，距离父元素左边线-400px*/
+        }
+
+        .d_shield1, .d_shield2, .d_shield3, .d_shield4, .d_shield5, .d_shield6, .d_shield7 {
+            background: #e15016;
+        }
+
+        .d_shield1 {
+            left: 32px;
+            width: 140px;
+            height: 346px;
+        }
+
+        .d_shield2 {
+            transform: skewX(5deg); /*变形（CSS3新增属性），水平方向斜切5度*/
+            left: 16px;
+            width: 100px;
+            height: 346px;
+        }
+
+        .d_shield3 {
+            transform: skewY(15deg); /*变形，垂直方向斜切15度*/
+            top: 265px;
+            left: 32px;
+            width: 140px;
+            height: 100px;
+        }
+
+        .d_shield4 {
+            left: 172px;
+            width: 140px;
+            height: 346px;
+        }
+
+        .d_shield5 {
+            transform: skewX(-5deg);
+            left: 227px;
+            width: 100px;
+            height: 346px;
+        }
+
+        .d_shield6 {
+            transform: skewY(-15deg);
+            top: 265px;
+            left: 172px;
+            width: 140px;
+            height: 100px;
+        }
+
+        .d_shield7 {
+            height: 20px;
+            top: 199px;
+            width: 80px;
+            left: 60px;
+        }
+
+        ._shield1, ._shield2, ._shield3, ._shield4 {
+            background: #ee6812;
+        }
+
+        ._shield1 {
+            left: 172px;
+            width: 140px;
+            height: 346px;
+        }
+
+        ._shield2 {
+            transform: skewX(-5deg);
+            left: 227px;
+            width: 100px;
+            height: 363px;
+        }
+
+        ._shield3 {
+            transform: skewY(-15deg);
+            top: 282px;
+            left: 172px;
+            width: 138px;
+            height: 100px;
+        }
+
+        ._shield4 {
+            height:43px;
+            top:113px;
+            width:100px;
+            left:180px;
+        }
+        .gray1, .gray2, .gray3, .gray4 {
+            background:#ebebeb;
+        }
+        .gray1 {
+            height:43px;
+            width:102px;
+            left:70px;
+            top:70px;
+        }
+        .gray2{
+            width:46px;
+            height:238px;
+            transform:skewX(5deg);
+            top:70px;
+            left:75px;     
+        }
+        .gray3 {
+            width:95px;
+            height:43px;
+            left:77px;
+            top:156px;
+        }
+        .gray4 {
+            width:87px;
+            height:47px;
+            left:91px;
+            top:261px;
+            transform:skewX(15deg)
+        }
+        .white1, .white2, .white3, .white4 {
+            background:#fff;
+        }
+        .white1 {
+            width:102px;
+            height:43px;
+            left:172px;
+            top:70px;
+        }
+        .white2 {
+            width:46px;
+            height:216px;
+            transform:skewX(-5deg);
+            top:70px;
+            left:223px;
+        }
+        .white3 {
+            height:43px;
+            width:95px;
+            left:172px;
+            top:156px;
+        }
+        .white4 {
+            height:47px;
+            width:87px;
+            left:172px;
+            top:251px;
+            transform:skewY(-15deg);
+        }
 	</style>
 </head>
 <body>
-	<!--这是H5 logo最外层的盒子div，类名为bg-->
-	<div class="bg">
-		<div class="beam" style="transform:rotate(5deg)"></div>
-		<div class="beam" style="transform:rotate(15deg)"></div>
-		<div class="beam" style="transform:rotate(25deg)"></div>
-		<div class="beam" style="transform:rotate(35deg)"></div>
-		<div class="beam" style="transform:rotate(45deg)"></div>
-		<div class="beam" style="transform:rotate(55deg)"></div>
-		<div class="beam" style="transform:rotate(65deg)"></div>
-		<div class="beam" style="transform:rotate(75deg)"></div>
-		<div class="beam" style="transform:rotate(85deg)"></div>
-		<div class="beam" style="transform:rotate(95deg)"></div>
-		<div class="beam" style="transform:rotate(105deg)"></div>
-		<div class="beam" style="transform:rotate(115deg)"></div>
-		<div class="beam" style="transform:rotate(125deg)"></div>
-		<div class="beam" style="transform:rotate(135deg)"></div>
-		<div class="beam" style="transform:rotate(145deg)"></div>
-		<div class="beam" style="transform:rotate(155deg)"></div>
-		<div class="beam" style="transform:rotate(165deg)"></div>
-		<div class="beam" style="transform:rotate(175deg)"></div>
-	</div>
-	<div class="logo" style="top:120px;left:229px;">
-		<!--盾牌左-->
-		<div class="d_shield1"></div>
-		<div class="d_shield2"></div>
-		<div class="d_shield3"></div>
-		<!--盾牌右-->
-		<div class="d_shield4"></div>
-		<div class="d_shield5"></div>
-		<div class="d_shield6"></div>
-		<!--浅橘色部分-->
-		<!--定义行内样式给整个浅橘色部分的div盒子进行某种变形,缩放为原来的0.82倍，并给这个div绝对值-->
-		<div style="transform: scale(0.82);left:31px;top:25px;">
-			<div class="l_shield1"></div>
-			<div class="l_shield2"></div>
-			<div class="l_shield3"></div>
-		</div>
-		<!--以下4个div组成logo里面数字5的左半边灰色部分-->
-		<div class="gray1"></div>
-		<div class="gray2"> </div>
-		<div class="gray3"></div>
-		<div class="gray4"></div>
-		<!--以下4个div组成logo里面数字5的右半边灰色部分-->
+ <div class="bg">
+        <div class="beam" style="transform:rotate(5deg)"></div>
+        <div class="beam" style="transform:rotate(15deg)"></div>
+        <div class="beam" style="transform:rotate(25deg)"></div>
+        <div class="beam" style="transform:rotate(35deg)"></div>
+        <div class="beam" style="transform:rotate(45deg)"></div>
+        <div class="beam" style="transform:rotate(55deg)"></div>
+        <div class="beam" style="transform:rotate(65deg)"></div>
+        <div class="beam" style="transform:rotate(75deg)"></div>
+        <div class="beam" style="transform:rotate(85deg)"></div>
+        <div class="beam" style="transform:rotate(95deg)"></div>
+        <div class="beam" style="transform:rotate(105deg)"></div>
+        <div class="beam" style="transform:rotate(115deg)"></div>
+        <div class="beam" style="transform:rotate(125deg)"></div>
+        <div class="beam" style="transform:rotate(135deg)"></div>
+        <div class="beam" style="transform:rotate(145deg)"></div>
+        <div class="beam" style="transform:rotate(155deg)"></div>
+        <div class="white beam" style="transform:rotate(165deg)"></div>
+        <div class="white beam" style="transform:rotate(175deg)"></div>
+        <div class="logo" style="top:120px;left:229px;">
+            <!--盾牌左-->
+            <div class="d_shield1"></div>
+            <div class="d_shield2"></div>
+            <div class="d_shield3"></div>
+            <!--盾牌右-->
+            <div class="d_shield4"></div>
+            <div class="d_shield5"></div>
+            <div class="d_shield6"></div>
+            <!--浅橘色部分-->
+            <!--定义行内样式给整个浅橘色部分的div盒子进行某种变形（css3新增属性），缩放为原来的0.82倍，并给这个div绝对定位-->
+            <div style="transform:scale(0.82);left:31px;top:25px">
+                <div class="_shield1"></div>
+                <div class="_shield2"></div>
+                <div class="_shield3"></div>
+            </div>
+            <div class="gray1"></div>
+            <div class="gray2"></div>
+            <div class="gray3"></div>
+            <div class="gray4"></div>
+            <div class="white1"></div>
+            <div class="white2"></div>
+            <div class="white3"></div>
+            <div class="white4"></div>
 
-	</div>
+            <div class="d_shield7"></div>
+            <div class="_shield4"></div>
+
+        </div>
+    </div>
 </body>
 </html>
