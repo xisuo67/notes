@@ -35,10 +35,35 @@
 			height:346px;
 		}
 		.d_shield2{
-			transform:shewx(5deg);/*变形，水平方向斜切5度*/
+			transform:skewx(5deg);/*变形，水平方向斜切5度*/
 			left:16px;
 			width:100px;
 			height: 346px;
+		}
+		.d_shield3{
+			transform:skewy(15deg);/*垂直方向斜切15度*/
+			top:265px;
+			left:32px;
+			width:140px;
+			height: 100px;
+		}
+		.d_shield4{
+			left:172px;
+			width:140px;
+			height:346px;
+		}
+		.d_shield5{
+			transform: skewx(-5deg);
+			left:227px;
+			width:100px;
+			height:346px;
+		}
+		.d_shield6{
+			transform:skewY(-15deg);
+			top:265px;
+			left:172px;
+			width:140px;
+			height:100px;
 		}
 	</style>
 </head>
@@ -65,7 +90,14 @@
 		<div class="beam" style="transform:rotate(175deg)"></div>
 	</div>
 	<div class="logo" style="top:120px;left:229px;">
-		
+		<!--盾牌左-->
+		<div class="d_shield1"></div>
+		<div class="d_shield2"></div>
+		<div class="d_shield3"></div>
+		<!--盾牌右-->
+		<div class="d_shield4"></div>
+		<div class="d_shield5"></div>
+		<div class="d_shield6"></div>
 	</div>
 </body>
 </html>
