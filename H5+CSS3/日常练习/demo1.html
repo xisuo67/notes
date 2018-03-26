@@ -12,9 +12,40 @@
 	/*类型选择器a表示链接*/
 	a{
 		text-decoration: none;
+		display: block;
+		color:#fff;
+		height: 35px;
+		padding:0 38px;
+	}
+	li{
+		background-color: rgba(0,0,0,0.7);
+		height:35px;
+		line-height: 35px;
+		overflow: hidden; 
+	}
+	li:nth-of-type(2n)
+	{
+		background-color: rgba(0,0,0,0.9);
+	}
+	/*鼠标悬停时背景颜色*/
+	li:hover{
+		background: #0099E5;
 	}
 </style>
 <body>
-
+	<nav>
+		<ul>
+			<li><a href="#"><span>JAVAEE培训</span></a></li>
+			<li><a href="#"><span>Android培训</span></a></li>
+			<li><a href="#"><span>PHP培训</span></a></li>
+			<li><a href="#"><span>PYthon</span></a></li>
+			<li><a href="#"><span>Test</span></a></li>
+			<li><a href="#"><span>JAVAEE培训</span></a></li>
+			<li><a href="#"><span>Android培训</span></a></li>
+			<li><a href="#"><span>PHP培训</span></a></li>
+			<li><a href="#"><span>PYthon</span></a></li>
+			<li><a href="#"><span>Test</span></a></li>
+		</ul>
+	</nav>
 </body>
 </html>
