@@ -7,3 +7,15 @@ create table vp
 	vCount int,
 	vDate datetime,
 )
+insert vp values(' È',200,2014/01/01)
+
+insert vp values('‘≤÷È± ',235,2014/01/02)
+insert vp values('‘≤÷È± ',275,2014/02/02)
+insert vp values('‘≤÷È± ',355,2014/02/02)
+insert vp values('± º«±æ',100,2014/03/11)
+insert vp values('± º«±æ',300,2014/03/22)
+
+select * from vp
+
+select vName, SUM(vCount) as total,YEAR(vDate) as [Year],MONTH(vDate) as [Month] from vp
+group by vName,YEAR(vDate),MONTH(vDate)
