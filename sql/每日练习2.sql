@@ -99,4 +99,8 @@ select depart from teachers group by depart
 select * from student
 --4、查询Score表中成绩在60到80之间的所有记录。
 select * from scores where degree between 60 and 80
-
+--5、查询Score表中成绩为85，86或88的记录
+select * from scores where degree=85 or degree=86 or degree=88
+--6、查询Student表中“95031”班或性别为“女”的同学记录。
+select * from student  where class='95031' or ssex='女'
+--7、以Class降序查询Student表的所有记录。
