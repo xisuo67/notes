@@ -5,9 +5,42 @@
 	<title>浮动和定位</title>
 </head>
 <style type="text/css">
-	/**/
+	/*设置背景颜色和边框*/
+	.header,.aside,.main,.footer{
+		background-color: pink;
+		border:1px solid yellow; /*边框为1px的黄色实线*/
+	}
+	.header{
+		height: 100px;
+	}
+	.aside,.main{
+		height: 200px;
+	}
+	.aside{
+		width:200px;
+		float: left; /*左浮动*/
+	}
+	.main{
+		margin-left:202px;  /*左边距为202px*/
+	}
+	.footer{
+		height:50px;
+	}
+	.float-div{
+		background-color: paleturquoise;
+		border:1px solid yellow;/*边框为1px的黄色实线*/
+		width:100px;
+		height: 100px;
+		position:absolute; /*绝对定位*/
+		top:160px;
+		left:500px;
+	}
 </style>
 <body>
-
+	<header class="header">header</header>
+	<aside class="aside">aside</aside>
+	<section class="main">section</section>
+	<footer class="footer">footer</footer>
+	<div class="float-div">floatdiv</div>
 </body>
 </html>
