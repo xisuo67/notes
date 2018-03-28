@@ -25,3 +25,16 @@ div,ul,li,p{
 	padding: 0;
 	outline:none;/*当元素获得焦点的时候，焦点框为0，不出现虚线框（或高亮框）*/
 }
+em,strong{
+	font-style:normal;/*字体样式正常*/
+	font-weight: normal;/*字体粗细正常*/
+}
+ul{
+	list-style:none;/*清除默认样式*/
+}
+h1{
+	font-size: 55px;
+	margin-top: 30px;/*上边距30px*/
+	color:white;
+	text-align: center
+}
