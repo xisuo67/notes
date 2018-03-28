@@ -8,5 +8,20 @@ html{
 body{
 	-webkit-box-sizing:border-box;
 	-moz-box-sizing:border-box;
-	/**/
+	/*为元素指定的任何内边距和边框都将在已设置的狂赌和高度内进行绘制*/
+	box-sizing: border-box;
+	position: relative;
+	z-index: 0;
+	width:100%;
+	max-width:640px;
+	min-height: 100%;
+	margin:0 auto; /*页面水平居中*/
+	overflow-x: hidden;
+	/*盒子阴影，垂直偏移模糊值，阴影颜色（其中rgb指定颜色，a指定透明度）*/
+	box-shadow: 0 0 10px rgba(0,0,0,0.3)
+}
+div,ul,li,p{
+	margin:0;
+	padding: 0;
+	outline:none;/*当元素获得焦点的时候，焦点框为0，不出现虚线框（或高亮框）*/
 }
