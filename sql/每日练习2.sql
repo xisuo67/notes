@@ -99,3 +99,4 @@ select depart from teachers group by depart
 select * from student
 --4、查询Score表中成绩在60到80之间的所有记录。
 select * from scores where degree between 60 and 80
+
