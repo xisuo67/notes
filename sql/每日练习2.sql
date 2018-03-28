@@ -27,4 +27,18 @@ group by vName,YEAR(vDate),MONTH(vDate)
 --==================================================================================================================
 Create database Student
 use Student
-create table 
+create table student
+(
+sno varchar(3) not null,
+sname varchar(4) not null,
+ssex varchar(2) not null,
+sbirthday datetime,
+class varchar(5)
+)
+
+create table courses
+(
+cno varchar(5) not null,
+cname varchar(10) not null,
+tno varchar(10) not null
+)
