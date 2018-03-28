@@ -42,3 +42,20 @@ cno varchar(5) not null,
 cname varchar(10) not null,
 tno varchar(10) not null
 )
+
+create table scores
+(
+	sno varchar(3) not null,
+	cno varchar(5) not null,
+	degree numeric(10,1) not null
+)
+
+create table teachers
+(
+	tno varchar(3) not null,
+	tname varchar(4) not null,
+	tsex varchar(2) not null,
+	tbirthday datetime not null,
+	prof varchar(6),
+	depart varchar(10) not null
+)
