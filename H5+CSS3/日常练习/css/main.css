@@ -22,3 +22,17 @@
 	padding:15px,5px,15px,0;
 	border-top: 1px solid #e6e8ea;/*顶部边框为1px 颜色为#e6e8ea的实线*/
 }
+.picRouteList a{
+	display: block;
+	position: relative;
+}
+.picRouteList .pic{
+	display: block;
+	min-height:150px;
+}
+.picRouteList .bottom{
+	position: absolute;
+	left:0;
+	right:0;
+	
+}
