@@ -118,3 +118,15 @@
 	height: 400px;
 	width:200px;
 }
+.qui-aside{
+	position: fixed;/*生成绝对定位的元素，相对于浏览器窗口进行定位。*/
+	top:0;
+	bottom:0;
+	width: :200px;
+	overflow-y: scroll ;/*垂直方向内容溢出则出现滚动条*/
+	background-color: #2d3741;
+}
+.qui-asideNav{
+	/*上内边距为80px，左右内边距为10px,下内边距为10px*/
+	padding:80px 10px 10px;
+}
