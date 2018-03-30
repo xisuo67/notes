@@ -64,3 +64,16 @@
 	font-weight:bold;
 	line-height: 22px;/*行高为22px*/
 }
+.picRoteList .day{
+	position: absolute;
+	top:10px;
+	right: 10px;
+	width:50px;
+	height: 50px;
+	background-color: rgba(43,171,121,0.8);
+	border-radius:50%;
+	text-align:center;
+	font-size: 18px;
+	line-height: 50px;
+	color:#fff;
+}
