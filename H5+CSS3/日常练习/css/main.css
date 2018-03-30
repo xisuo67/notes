@@ -130,3 +130,19 @@
 	/*上内边距为80px，左右内边距为10px,下内边距为10px*/
 	padding:80px 10px 10px;
 }
+.qui-asideNav li{
+	border-top:1px solid #232d34;
+	background-color: #36424b;
+}
+.qui-asideNav a{
+	text-decoration: none;
+	display:block; /*此元素将显示为块级元素，此元素前后会带有换行符。*/
+	padding-left:15px;
+	font-size:16px;
+	line-height: 44px;
+	color:#ced1d5;
+}
+.qui-asideNav a:hover{
+	color:white;
+	background-color:#2bab79;
+}
