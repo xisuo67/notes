@@ -59,4 +59,8 @@
 	width:100%;
 	overflow: hidden;
 	text-overflow:ellipsis;/*表示当对象内文本溢出是显示省略标记（...）*/
+	white-space: nowrap;/*规定段落中的文本不进行换行*/
+	font-size: 18px;
+	font-weight:bold;
+	line-height: 22px;/*行高为22px*/
 }
