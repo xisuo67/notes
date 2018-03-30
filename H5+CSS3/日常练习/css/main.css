@@ -51,4 +51,12 @@
 	border-radius:50%; /*微元素添加圆角边框，边框半径为宽度的50%*/
 	overflow: hidden;	
 }
-
+.picRoteList .bottom .face img{
+	display:block;
+	border-radius: 50%;
+}
+.picRoteList .bottom .title{
+	width:100%;
+	overflow: hidden;
+	text-overflow:ellipsis;/*表示当对象内文本溢出是显示省略标记（...）*/
+}
