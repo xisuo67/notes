@@ -22,7 +22,7 @@ namespace BinarySearch
             int low = start ?? index;
             int hight = end ?? endIndex;
             int mid = (low+hight) / 2;
-            if (index>end)
+            if (low>hight)
                 return -1;
             else
             {
