@@ -77,3 +77,27 @@
 	line-height: 50px;
 	color:#fff;
 }
+.picRoteList .infos{
+	margin-top:7px;
+}
+.picRoteList .info>div{
+	margin-bottom: 5px;/*底部外边距*/
+	padding-left: 40px;/*左边内边距*/
+}
+.picRoteList .infos em{
+	float:left;
+	margin-left:-40px;
+	font-size: 15px;
+	font-weight: blod;/*属性设置文本的粗细。*/
+}
+.picRoteList .infos p{
+	max-height: 48px;
+	overflow: hidden;
+}
+.qui-footerBasic{
+	width:100%;
+	margin:20px 0; /*上下外边距为20px，左右外边距为0*/
+	text-align: center;
+	font-size: 10px;
+	line-height: 20px;
+}
