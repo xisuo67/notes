@@ -1,0 +1,9 @@
+CSS3 的@font-face 规则：
+  @font-face是CSS3的新特新，用于定义服务器字体。通过@font-face规则，开发者便可以使用户计算机中未安装的字体。
+  @font-face规则语法格式如下:
+  @font-face{
+	font-family:<YourWebFontName>;
+	src:<sourc>[<format>][,<source>[<format>]]*;
+	[font-weight:<weight>];
+	[font-style:<style>]
+}
