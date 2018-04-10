@@ -7,3 +7,8 @@ CSS3 的@font-face 规则：
 	[font-weight:<weight>];
 	[font-style:<style>]
 }
+ @font-face取值说明：
+ YourWebFontName:自定义的字体名称，最好是使用下载的默认字体（如下载字体名称为myFont,这里就填写为"myFont"）
+ source:自定义的字体存放路径
+ format:自定义的字体格式，主要用来帮助浏览器识别自定义的字体格式，主要有：truetype、opentype、truetype-aat、embedded-opentype、svg等几种类型
+ weight和style:是否粗体,style主要定义字体样式如斜体
