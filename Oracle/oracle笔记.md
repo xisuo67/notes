@@ -13,8 +13,8 @@
 * [拼接列](#拼接列)
 * [语句中使用逻辑条件](#语句中使用逻辑条件)
 * [限制返回的行数](#限制返回的行数)
-* [从列表中随机返回多条记录]（#从列表中随机返回多条记录）
-
+* [从列表中随机返回多条记录](#从列表中随机返回多条记录)
+* [模糊查询](#模糊查询)
 
 ### 将空值转化为实际值
  >select **coalesce**(comm,0) from emp;
@@ -89,4 +89,18 @@ select * from (
 select empno,ename from (
  select empno,ename from emp order by dbms_random.value()
 ) where rownum<=3;
+```
+### 模糊查询
+ 先建立如下视图：
+```
+ create or replace view v as 
+ select 'ABCDEF' as vname from dual
+ union all 
+ select '_BCEFG' as vname from dual
+ union all 
+ select '_BCEDF' as vname from dual
+ union all
+ select '_\BCEDF' as vname from dual
+ union all
+ select 'XYCEG' as vname from dual;
 ```
