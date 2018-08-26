@@ -116,9 +116,12 @@ select empno,ename from (
  3 rows selected
  ```
   发现多了一个ABCEDF。因为在like子句中有两个通配符："%"（代替一个或多个字符）、"_"(代替一个或多个字符)。
-在这里，"_"被当作通配符了，怎么办呢？莫急，我们可以用转义字符：
->> select * from v where vname like '**\**_BCE%' **escape '\'**
+在这里，"_"被当作通配符了，怎么办呢？莫急，我们可以用转义字符：  
+```
+ select * from v where vname like '\_BCE%' escape '\'
 -----------------------------------------------------------------
 _BCEFG
 _BCEDF
+2 rows selected
+```
   escape把'\'标识为转义字符，而'\'把'_'转义为字符，而非通配符。
