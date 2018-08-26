@@ -104,3 +104,15 @@ select empno,ename from (
  union all
  select 'XYCEG' as vname from dual;
 ```
+ 要求一：查出vname 中包含的字符串“CED”。
+ 方法比较简单，select * from v where vname like '%CED%'
+ 要求二：查出vname中包含字符串"_BCE"的。
+ ```
+ select * from v where vname like '_BCE%';
+ --------------------------------------------
+ ABCEDF
+ _BCEFG
+ _BCEDF
+ 3 rows selected
+ ```
+  
