@@ -83,3 +83,10 @@ select * from (
  select rownum as sn.,emp.* from emp where rownum<=2)
 ) where sn=2;
 ```
+### 从列表中随机返回多条记录
+使用dbms_random 可以对数据进行随机排序。如下：
+```
+select empno,ename from (
+ select empno,ename from emp order by dbms_random.value()
+) where rownum<=3;
+```
