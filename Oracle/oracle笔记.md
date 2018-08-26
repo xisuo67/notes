@@ -15,6 +15,7 @@
 * [限制返回的行数](#限制返回的行数)
 * [从列表中随机返回多条记录](#从列表中随机返回多条记录)
 * [模糊查询](#模糊查询)
+* [字符替换](#字符替换)
 
 ### 将空值转化为实际值
  >select **coalesce**(comm,0) from emp;
@@ -134,3 +135,27 @@ _\BCEDF
 1 rows selected
 ```
  对于字符串中包含"%"的情况，上面处理方法一样。
+ ### 字符替换
+  Translate,语法格式：Translate(expr,from_string,to_string)
+  示例如下：
+ ```
+  select Translate('ab 你好 bcadefg','abcdefg','1234567') as new_str from dual;
+ ----------------------------------------------------------------------------------
+ 12 你好 2314567
+ 1 row selected
+ ```
+  from_string与to_string 以字符为单位，对应字符一一替换  
+  如果to_stirng为空值，则返回空值。
+```
+ select translate('ab 你好 bcadefg','abcdefg','') as new_str from dual;
+-----------------------------------------------------------------------------------
+null
+1 row selected
+```
+ 如果to_string对应的位置没有字符，删除from_string中对应的列出的字符将会被消掉
+````
+ select translate('ab 你好 bcadefg','labcdefg','1') as new_str from dual;
+---------------------------------------------------------------------------------------
+你好
+1 row selected
+```
