@@ -20,3 +20,15 @@
  
  select * from v
 ```
+ |C1|C2|C3|C4|C5|C6|
+ |--|--|--|--|--|--|
+ |  |  |1 |  |2 |  |
+ |  |  |  |3 |  | 2|
+ ```
+ select Coalese(c1,c2,c3,c4,c5,c6) as c from v;
+ ```
+  可以看到，相对于nvl来说，**coalesce**支持多个参数，能很方便的返回第一个不为空的值。如果上面的语句改用nvl,就要嵌套很多层。
+```
+  select nvl(nvl(nvl(nvl(nvl(c1,c2),c3),c4),c5),c6) as c from v;
+```
+ 所以如果要用到空值转化为实际值，最好使用coalesce
