@@ -10,7 +10,7 @@
 
 ## 目录
 * [将空值转化为实际值](#将空值转化为实际值)
-* 
+* [拼接列](#拼接列)
 ### 将空值转化为实际值
  >select **coalesce**(comm,0) from emp;
 ```
@@ -32,3 +32,12 @@
   select nvl(nvl(nvl(nvl(nvl(c1,c2),c3),c4),c5),c6) as c from v;
 ```
  所以如果要用到空值转化为实际值，最好使用coalesce
+
+### 拼接列
+ 拼接列可以使用字符串连接字符“||”来把各列拼接到一起。
+```
+ select ename || '的工作是' || job as msg from emp where departno=10;
+ Msg
+ ----------------------------------------------
+ Chark 的工作是Manager
+```
