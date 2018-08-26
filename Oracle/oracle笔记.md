@@ -12,6 +12,9 @@
 * [将空值转化为实际值](#将空值转化为实际值)
 * [拼接列](#拼接列)
 * [语句中使用逻辑条件](#语句中使用逻辑条件)
+* [限制返回的行数](#限制返回的行数)
+* [从列表中随机返回多条记录]（#从列表中随机返回多条记录）
+
 
 ### 将空值转化为实际值
  >select **coalesce**(comm,0) from emp;
@@ -60,4 +63,23 @@ ename       sal     status
 Clark       2450     Ok
 king        5000     过高
 M           1300     过低
+```
+### 限制返回的行数
+ 在查询时，并不是每次都要返回所有数据，比如，在进行抽查的时候会要求只返回两条数据。
+ 我们可以使用伪列rownum来过滤，rownum依次对返回的每一条数据做一个标识。
+```
+ select * from emp where rownum<=2;
+```
+ 如果直接使用rownum=2作为查询条件会出现什么情况呢？
+ ```
+ select * from emp where rownum=2;
+ 
+ no row selected
+ ```
+  因为rownum是依次对数据做标识的，就像上学时依据考分排名一样，需要有第一名，后面才会有第二名。所以要先把所有的数据取出来，才能确认第二名。
+  正确的取第二行数据的查询应该像下面这样，先生成序号：
+```
+select * from (
+ select rownum as sn.,emp.* from emp where rownum<=2)
+) where sn=2;
 ```
