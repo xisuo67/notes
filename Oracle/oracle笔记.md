@@ -117,6 +117,7 @@ select empno,ename from (
  _BCEDF
  3 rows selected
  ```
+ 
   发现多了一个ABCEDF。因为在like子句中有两个通配符："%"（代替一个或多个字符）、"_"(代替一个或多个字符)。
 在这里，"_"被当作通配符了，怎么办呢？莫急，我们可以用转义字符：  
 ```
@@ -126,27 +127,34 @@ _BCEFG
 _BCEDF
 2 rows selected
 ```
+
   escape把'\'标识为转义字符，而'\'把'_'转义为字符，而非通配符。
   或许有人注意到其中有一行值为'_\BCEDF'。那么加上了escape'\' 后怎么返回这一行数据呢？
   没错，双写转义字符即可：
+  
 ```
 select * from v where vname like '_\\BCE%' escape '\';
 -------------------------------------------------------------
 _\BCEDF
 1 rows selected
 ```
+
  对于字符串中包含"%"的情况，上面处理方法一样。
  ### 字符替换
+ 
   Translate,语法格式：Translate(expr,from_string,to_string)
   示例如下：
+  
  ```
   select Translate('ab 你好 bcadefg','abcdefg','1234567') as new_str from dual;
  ----------------------------------------------------------------------------------
  12 你好 2314567
  1 row selected
  ```
+ 
   from_string与to_string 以字符为单位，对应字符一一替换  
   如果to_stirng为空值，则返回空值。
+  
 ```
  select translate('ab 你好 bcadefg','abcdefg','') as new_str from dual;
 -----------------------------------------------------------------------------------
@@ -155,9 +163,41 @@ null
 ```
 
  如果to_string对应的位置没有字符，删除from_string中对应的列出的字符将会被消掉
-````
+```
  select translate('ab 你好 bcadefg','labcdefg','1') as new_str from dual;
----------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 你好
 1 row selected
 ```
+### 按数字和字母混合字符串中的字母排序
+ 首先创建View如下：
+ ```
+  Create or Replace View v
+  as 
+  Select empno || ' ' || ename as data from emp;
+ ```
+ ```
+  select * from v;
+  --------------------
+  7369 smith
+  7449 allen
+  ...  ...
+  7990 james
+  7902 ford
+  7934 miller
+  14 rows selected
+ ```
+  这个需求就难一点了，看原来的ename列，要求按期中的字母列ename排序
+  那么就要先去出其中的字母才行，我们可以用translate的替换功能，把数字与空格都替换为空：
+ ```
+  select data,translate(data,'- 0123456789','-') as name
+  2 from v
+  3 order by 2;
+  
+  data              ename
+  ------------------------
+  7876 adms         adams
+  7499 allen        allen
+  7698 blake        blake
+  
+ ```
