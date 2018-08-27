@@ -153,6 +153,7 @@ _\BCEDF
 null
 1 row selected
 ```
+
  如果to_string对应的位置没有字符，删除from_string中对应的列出的字符将会被消掉
 ````
  select translate('ab 你好 bcadefg','labcdefg','1') as new_str from dual;
@@ -160,5 +161,3 @@ null
 你好
 1 row selected
 ```
-### 按数字和字母混合字符串中的字母排序
-
