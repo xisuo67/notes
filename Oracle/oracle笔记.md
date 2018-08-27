@@ -199,5 +199,9 @@ null
   7876 adms         adams
   7499 allen        allen
   7698 blake        blake
-  
+  ...  ....
+  7369 smith        smith
+  7844 turner       turner
+  7521 ward         ward
+  14 rows selected
  ```
