@@ -17,6 +17,7 @@ Oracle总结笔记
 * [模糊查询](#模糊查询)
 * [字符替换](#字符替换)
 * [按数字和字母混合字符串中的字母排序](#按数字和字母混合字符串中的字母排序)
+* [处理排序空值](#处理排序空值)
 
 ### 将空值转化为实际值
  >select **coalesce**(comm,0) from emp;
@@ -205,10 +206,38 @@ null
   7521 ward         ward
   14 rows selected
  ```
-
-
-
-
+### 处理排序空值
+ oracle 默认排序空值在后面，如果想把空值（如 emp.comm）显示在前面怎么办，用Nvl(comm,-1)吗？
+ ```
+  select ename,sal,comm,nvl(comm,-1) order_col from emp order by 4;
+  ename        sal        comm      order_col
+  -------------------------------------------------
+  smith        800                    -1
+  ...     ....
+  martin       1250      1400        1400
+  14 rows selected
+ ```
+ 也许很多人都是用这种方法，但这种方法需要对列类型及保存的数据有所了解才行，而且保存的数据如果有变化，该语句就要重新维护。
+ 其实可以使用关键字 **nulls first** 和 **nulls last**
+ 空值在前面
+ ```
+  select ename,sal,comm from emp order by 3 nulls first;
+  ename     sal     comm
+  ------------------------------
+  smith     800
+  ...       ...
+  martin    1250    1400
+ ```
+ 空值在后面
+ ```
+  select ename,sal,comm from emp order by 3 nulls last;
+    ename     sal     comm
+  ------------------------------
+  martin    1250    1400
+  ...       ...
+  smith     800
+ ```
+ 是不是方便得多？
 
 
 
