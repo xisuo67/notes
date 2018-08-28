@@ -263,4 +263,13 @@ null
  |7900|james|2|950
  |7698|blake|2|2850
 
+ 可以看到，950与2850都排在了后面，也可以不显示级别，直接把case when 放在order by 中：
+ ```
+  select empno as 编码,
+   ename as 姓名,
+   sal as 工资
+   from emp
+   where deptno=30
+   order by case when sal>=1000 and sal<2000 then 1 esle 2 end,3;
+ ```
 [回到顶部](#oracle总结笔记)
