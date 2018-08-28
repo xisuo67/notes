@@ -252,6 +252,8 @@ null
   where deptno=30
   order by 3,4
  ```
+ 
+ 
  |编码| 姓名  |级别|工资|
  |7654|martin|  1 |1250
  |7521|ward|1|1250
@@ -260,6 +262,10 @@ null
  |7900|james|2|950
  |7698|blake|2|2850
  
+ 
+ |Author|xisuo67|
+|---|---
+|E-mail|392706283@qq.com
  
 
 [回到顶部](#oracle总结笔记)
