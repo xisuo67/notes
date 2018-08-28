@@ -283,5 +283,23 @@ null
  |7698|blake|2850
  
  ### 多表连接解析
- 
+  关于Inner Join、Left Join、Right Join和Full Join解析。很多人对于这几种连接方式，特别是Left Join与Rigth Join分不清楚，下面通过案例解析一下。方便大家直观学习。
+  首先建立两个测试表
+  ```
+   Drop table L PurGe;
+   Drop table R PurGe;
+   /*左表*/
+   Create Table L as
+   Select 'Left_1' as str,'1' as V from dual Union All
+   select 'Left_2','2' as V from dual union all
+   select 'Left_3','3' as V from dual Union all
+   select 'Left_4','4' as V from dual;
+   /*右表*/
+   Create Table R as
+   Select 'right_3' as str,'3' as v,1 as status from dual Union all
+   Select 'rigth_4' as str,'4' as v,0 as status from dual Union all
+   Select 'right_5' as str,'5' as v,0 as status from dual Union all
+   Select 'right_6' as str,'6' as v,0 as status from dual;
+  ```
+  
 [回到顶部](#oracle总结笔记)
