@@ -19,6 +19,7 @@ Oracle总结笔记
 * [按数字和字母混合字符串中的字母排序](#按数字和字母混合字符串中的字母排序)
 * [处理排序空值](#处理排序空值)
 * [根据条件取不同列中的值来排序](#根据条件取不同列中的值来排序)
+* [Inner Join、Left Join、Right Join和Full Join解析](#Inner Join、Left Join、Right Join和Full Join解析)
 
 ### 将空值转化为实际值
  >select **coalesce**(comm,0) from emp;
@@ -280,5 +281,7 @@ null
  |7499|allen|1600
  |7900|james|950
  |7698|blake|2850
+ 
+ ### inner join、left join、right join和full join解析
  
 [回到顶部](#oracle总结笔记)
