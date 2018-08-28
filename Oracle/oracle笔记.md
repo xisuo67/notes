@@ -20,7 +20,7 @@ Oracle总结笔记
 * [处理排序空值](#处理排序空值)
 * [根据条件取不同列中的值来排序](#根据条件取不同列中的值来排序)
 * [多表连接解析](#多表连接解析)
-*1.Inner Join的特点*
+  *1.Inner Join的特点*
 
 ### 将空值转化为实际值
  >select **coalesce**(comm,0) from emp;
@@ -284,6 +284,7 @@ null
  |7698|blake|2850
  
  ### 多表连接解析
+ ----------------
   关于Inner Join、Left Join、Right Join和Full Join解析。很多人对于这几种连接方式，特别是Left Join与Rigth Join分不清楚，下面通过案例解析一下。方便大家直观学习。
   首先建立两个测试表
   ```
@@ -302,5 +303,5 @@ null
    Select 'right_5' as str,'5' as v,0 as status from dual Union all
    Select 'right_6' as str,'6' as v,0 as status from dual;
   ```
-  
+  ### inner join的特点
 [回到顶部](#oracle总结笔记)
