@@ -272,4 +272,13 @@ null
    where deptno=30
    order by case when sal>=1000 and sal<2000 then 1 esle 2 end,3;
  ```
+  |编码| 姓名|工资|
+  |--|--|--|
+ |7654|martin|1250
+ |7521|ward|1250
+ |7844|turner|1500
+ |7499|allen|1600
+ |7900|james|950
+ |7698|blake|2850
+ 
 [回到顶部](#oracle总结笔记)
