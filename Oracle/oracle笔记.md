@@ -312,4 +312,6 @@ null
    Select 'right_6' as str,'6' as v,0 as status from dual;
   ```
   ### 内连的特点
+   Inner Join的特点
+   
 [回到顶部](#oracle总结笔记)
