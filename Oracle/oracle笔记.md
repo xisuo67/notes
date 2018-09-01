@@ -322,16 +322,15 @@ null
    inner join r on 1.v=r.v
    order by 1,2;
    
- ```
-  |C1|C2|C3|C4|C5|C6|
- |--|--|--|--|--|--|
- |  |  |1 |  |2 |  |
- |  |  |  |3 |  | 2|
+ ``` 
+ 
+  |Left_str|Rigth_str|
+ |--|--|
+ | left_3 | rigth_3 |
+ | left_4 | left_4 | 
+ 
  --------------------------------------------------------------
  
   
-     |Left_str|Rigth_str|
-      |--|--|
-     |left_3|rigth_3|
-     |left_4|right_4|
+
 [回到顶部](#oracle总结笔记)
