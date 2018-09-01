@@ -478,21 +478,21 @@ select l.str as left_str,r.str as right_str
    
 ------------------------------------------------------------------------
 ### 插入更新与删除
-      插入新记录
-      我们先建立测试表，各列都有默认值。
-      
-      ```
-         create table test(
-            c1 varchar2(10) defalut '默认1',
-            c2 varchar2(10) defalut '默认2',
-            c3 varchar2(10) defalut '默认3',
-            c4 Date delfault SysDate,
-         );
-      ```
-      新增数据如下：
-      ```
-         insert into set(c1,c2,c3) values(default,null,'手动赋值');
-      ```
+ 插入新记录
+ 我们先建立测试表，各列都有默认值。
+
+```
+   create table test(
+      c1 varchar2(10) defalut '默认1',
+      c2 varchar2(10) defalut '默认2',
+      c3 varchar2(10) defalut '默认3',
+      c4 Date delfault SysDate,
+   );
+```
+新增数据如下：
+```
+   insert into set(c1,c2,c3) values(default,null,'手动赋值');
+```
       
 --------------------------------------------------------------------------
 
