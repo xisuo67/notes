@@ -534,7 +534,7 @@ select l.str as left_str,r.str as right_str
    ```
       create table test2 as select * from test where 1=2;
    ```
-   注意：复制的表不包含默认值等约束信息，使用这种方式复制表后，需要重新默认值索引和约束等信息。
+   **注意：复制的表不包含默认值等约束信息，使用这种方式复制表后，需要重新默认值索引和约束等信息。**
 
 
 [回到顶部](#oracle总结笔记)
