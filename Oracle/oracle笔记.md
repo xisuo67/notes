@@ -315,7 +315,18 @@ null
   ```
   ----------------------------------------------------------------
   ### 内连的特点
-   Inner Join的特点
+   Inner Join的特点，该方式放回两表相匹配的数据，左表的“1、2”，以及右表的“5、6”都没有显示。
+ ```
+   select 1.str as left_str,r.str as right_str
+   from 1
+   inner join r on 1.v=r.v
+   order by 1,2;
+   
+ ```
+     |Left_str|Rigth_str|
+     |--|--|
+     |left_3|rigth_3
+     |left_4|right_4
      
  --------------------------------------------------------------
 [回到顶部](#oracle总结笔记)
