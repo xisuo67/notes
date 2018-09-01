@@ -491,9 +491,18 @@ select l.str as left_str,r.str as right_str
 ```
 新增数据如下：
 ```
-   insert into set(c1,c2,c3) values(default,null,'手动赋值');
+   insert into testt(c1,c2,c3) values(default,null,'手动赋值');
+   select * from test;
+   C1       C2       C3       C4
+   ----------------------------------
+   默认1              手动赋值   2018-09-22
+   1 row selected
+   
 ```
-      
+注意以下几点：
+1、如果insert语句中没有含默认值的列，则会添加默认值，如C4列。
+2、
+3、
 --------------------------------------------------------------------------
 
 
