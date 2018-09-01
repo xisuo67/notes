@@ -397,7 +397,7 @@ select l.str as left_str,r.str as right_str
  ||right_5
  ||right_6
  
- **注意：**full join无（+）的写法
+ **注意：** full join无（+）的写法
  
 -------------------------------------------------------------------------
 
