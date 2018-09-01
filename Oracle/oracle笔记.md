@@ -549,7 +549,23 @@ select l.str as left_str,r.str as right_str
    ```
    这时我们可以使用加了with check option关键字的view来达到目的。
    下面的示例中，我们限制了不符合内联视图条件的数据（sysdate+1）:
-   
+   ```
+   insert into
+   (select empno,ename,hiredate
+      from emp
+      where hiredate<=sysdate with check option)
+    Values
+      (9999,'test',sysdate+1);
+    insert into
+    (select empno,ename,hiredate
+      from emp
+      where hiredate<=sysdate with check option)
+     Values
+      (9999,'test',sysdate+1);
+     
+    ora-01402:视图 with check option where 子句违规
+   ```
+      
 --------------------------------------------------------------------------------------------------
 
 
