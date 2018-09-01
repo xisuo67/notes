@@ -565,9 +565,15 @@ select l.str as left_str,r.str as right_str
      
     ora-01402:视图 with check option where 子句违规
    ```
-      
+   语句（select empno,ename,hiredate from emp where hiredate<=sysdate with check option）被当做一个视图处理。
+   
+   因为里面有关键字“with check option”,所以insert的数据不符合其中的条件（hiredate<=sysdate）时，就不允许利用insert。
+   
+   当跪着较复杂，无法用约束实现时，这种限制方式就比较有用了。
+   
 --------------------------------------------------------------------------------------------------
 
 
+   
 
 [回到顶部](#oracle总结笔记)
