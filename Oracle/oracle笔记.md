@@ -317,9 +317,9 @@ null
   ### 内连的特点
    Inner Join的特点，该方式放回两表相匹配的数据，左表的“1、2”，以及右表的“5、6”都没有显示。
  ```
-   select 1.str as left_str,r.str as right_str
-   from 1
-   inner join r on 1.v=r.v
+   select l.str as left_str,r.str as right_str
+   from l
+   inner join r on l.v=r.v
    order by 1,2;
    
  ``` 
@@ -330,7 +330,22 @@ null
  | left_4 | left_4 | 
  
  --------------------------------------------------------------
+ ### 左连的特点
+ left join的特点，该方式以左表为主表，左表返回所有数据，右表中只返回与左表匹配的数据，“5、6”都没有显示。
+ ```
+   select l.str as left_str,r.str as right_str
+      from l
+      left join r on l.v=r.v
+      order by 1,2;
+ ```
+   |Left_str|Rigth_str|
+ |--|--|
+ | left_1 ||
+ | left_2 ||
+ |left_3|rigth_3
+ |left_4|rigth_4
  
+ ----------------------------------------------------------------
   
 
 [回到顶部](#oracle总结笔记)
