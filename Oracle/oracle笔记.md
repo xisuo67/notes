@@ -415,6 +415,7 @@ select l.str as left_str,r.str as right_str
  | left_2 ||
  |left_3|rigth_3|1
  |left_4|rigth_4|0
+ 
    对于其中的L表，四条数据都返回了。而对于R表，我们只需要显示其中的status=1的部分，也就是r.v=4的部分
    结果应为：
    ```
@@ -450,6 +451,28 @@ select l.str as left_str,r.str as right_str
    left_3            right_3                 1
    1 row selected
   ```
+   很明显，与我们期望得到的结果不一致，这是很多人在写查询语句或更改查询时遇到的一种错误。问题就在于所加的条件的位置及写法，正确的写法分别如下：
+   ```
+      select l.str as left_str,r.str as right_str,r.status
+         from l 
+         left join r on (l.v=r.v and r.status=1)
+         order by 1,2;
+   ```
+   (+)用法：
+   ```
+      select l.str as left_str,r.str as right_str,r.status
+         from l,r
+         where l.v=r.v(+)
+         and r.status(+)=1
+         order by 1,2;
+   ```
+   以上两种写法中，join的方式明显更容易辨别，这也是本人建议使用join的原因。语句也可以像下面这样写，先过滤，再用join，这样写会更加清晰。
+   ```
+      select l.str as left_str,r.str as right_str,r.status
+         from l
+         left join r (select * from r where r.status=1) r on (l.v=r.v)
+         order by 1,2;
+   ```
    
 ------------------------------------------------------------------------
 
