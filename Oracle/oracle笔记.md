@@ -416,6 +416,17 @@ select l.str as left_str,r.str as right_str
  |left_3|rigth_3|1
  |left_4|rigth_4|0
    对于其中的L表，四条数据都返回了。而对于R表，我们只需要显示其中的status=1的部分，也就是r.v=4的部分
+   结果应为：
+   ```
+   Left_str          Right_str
+   ----------------------------------------
+   Left_1
+   Left_2
+   Left_3            right_3
+   Left_4
+   
+   4 row selected
+   ```
    对于这种需求，会有人直接在上面的语句中加入条件status=1，写出如下语句：
    ```
       select l.str as left_str,r.str as right_str,r.status
@@ -435,6 +446,7 @@ select l.str as left_str,r.str as right_str
    这样的查询结果为：
   ```
    Left_str          Right_str            Status
+   -------------------------------------------------
    left_3            right_3                 1
    1 row selected
   ```
