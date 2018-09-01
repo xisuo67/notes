@@ -415,7 +415,30 @@ select l.str as left_str,r.str as right_str
  | left_2 ||
  |left_3|rigth_3|1
  |left_4|rigth_4|0
- 
+   对于其中的L表，四条数据都返回了。而对于R表，我们只需要显示其中的status=1的部分，也就是r.v=4的部分
+   对于这种需求，会有人直接在上面的语句中加入条件status=1，写出如下语句：
+   ```
+      select l.str as left_str,r.str as right_str,r.status
+         from l 
+         left join r on l.v=r.v
+         where r.status=1
+         order by 1,2;
+   ```
+   （+）用法：
+   ```
+      select l.str as left_str,r.str as right_str,r.status
+      from l,r
+      where l.v=r.v(+)
+      and r.status=1
+      order by 1,2;
+   ```
+   这样的查询结果为：
+  ```
+   Left_str          Right_str            Status
+   left_3            right_3                 1
+   1 row selected
+  ```
+   
 ------------------------------------------------------------------------
 
 [回到顶部](#oracle总结笔记)
