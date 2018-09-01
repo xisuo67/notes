@@ -403,7 +403,19 @@ select l.str as left_str,r.str as right_str
 -------------------------------------------------------------------------
 
 ### 外连接中的条件不要乱放
-
+```
+   select l.str as left_str,r.str as right_str,r.status
+      from l 
+      left join r on l.v=r.v
+      order by 1,2;
+```
+   |Left_str|Rigth_str|Status
+ |--|--|--|
+ | left_1 ||
+ | left_2 ||
+ |left_3|rigth_3|1
+ |left_4|rigth_4|0
+ 
 ------------------------------------------------------------------------
 
 [回到顶部](#oracle总结笔记)
