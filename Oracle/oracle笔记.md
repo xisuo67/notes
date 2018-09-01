@@ -21,6 +21,7 @@ Oracle总结笔记
 * [多表连接解析](#多表连接解析)
     * [内连的特点](#内连的特点)
     * [左连的特点](#左连的特点)  
+    * [右连的特点](#右连的特点)  
 -------------------------------------------------------
 ### 将空值转化为实际值
  >select **coalesce**(comm,0) from emp;
@@ -345,7 +346,30 @@ null
  |left_3|rigth_3
  |left_4|rigth_4
  
+ 加（+）后的写法：
+ ```
+   select l.str as left_str,r.str as right_str
+      from l,r
+      where l.v=r.v(+)
+      order by 1,2;
+ ```
  ----------------------------------------------------------------
-  
-
+ 
+  ### 右连的特点
+   rigth join的特点，该方式以右表为主，左表中只返回与右表匹配的数据“3、4”，而“1、2”都没有显示，右表返回所有的数据
+```
+select l.str as left_str,r.str as right_str
+   from l 
+   right join r on l.v=r.v
+   order by 1,2;
+```
+   |Left_str|Rigth_str|
+ |--|--|
+ |left_3|rigth_3
+ |left_4|rigth_4
+ ||right_5
+ ||right_6
+ 
+ 
+----------------------------------------------------------------------
 [回到顶部](#oracle总结笔记)
