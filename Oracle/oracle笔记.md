@@ -500,6 +500,7 @@ select l.str as left_str,r.str as right_str
    
 ```
    注意以下几点：
+   
    1、如果insert语句中没有含默认值的列，则会添加默认值，如C4列。 
    
    2、如果包含有默认值的列，需要使用default关键字，才会添加默认值，如C1列。
