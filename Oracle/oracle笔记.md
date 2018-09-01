@@ -388,7 +388,15 @@ select l.str as left_str,r.str as right_str
       full join r on r.v=l.v
       order by 1,2;
  ```
-
+   |Left_str|Rigth_str|
+ |--|--|
+ |left_1|
+ |left_2|
+ |left_3|rigth_3
+ |left_4|rigth_4
+ ||right_5
+ ||right_6
+ 
 -------------------------------------------------------------------------
 
 
