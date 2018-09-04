@@ -582,9 +582,45 @@ select l.str as left_str,r.str as right_str
 
 首先建立两个测试用表：
 ```
-
+   create table emp1 as select empno,ename,job from emp where 1=2;
+   create table emp2 as select empno,ename,deptno from emp where 1=2;
 ```
+**无条件insert:**
+```
+insert all
+   into emp1(empno,ename,job) values (empno,ename,job)
+   into emp2(empno,ename,deptno) values (empno,ename,deptno)
+select empno,ename,job,deptno from emp where deptno in (10,20);
 
+select * from emp1;
+      empno          ename          job
+    -------------------------------------
+      7396           smith          clerk
+      7566           jones          manager
+      7782           clark          manager
+      7788           scott          analyst
+      7839           king           president
+      7876           adams          clerk
+      7902           ford           analyst
+      7934           miller         clerk
+      
+ 8 rows selected
+ 
+
+select * from emp2;
+      empno          ename          deptno
+    -------------------------------------
+      7396           smith          20
+      7566           jones          20
+      7782           clark          10
+      7788           scott          20
+      7839           king           10
+      7876           adams          20
+      7902           ford           20
+      7934           miller         10
+      
+      8 rows selected
+```
 --------------------------------------------------------------------------------------------------
    
 
