@@ -574,15 +574,11 @@ select l.str as left_str,r.str as right_str
    
 --------------------------------------------------------------------------------------------------
 ### 多表插入语句
-多表插入语句分为以下四种：
-
-1、无条件insert
-
-2、有条件insert all
-
-3、转置insert
-
-4、有条件insert first
+多表插入语句分为以下四种：           
+1、无条件insert          
+2、有条件insert all               
+3、转置insert              
+4、有条件insert first          
 
 首先建立两个测试用表：
 ```
