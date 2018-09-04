@@ -585,7 +585,7 @@ select l.str as left_str,r.str as right_str
    create table emp1 as select empno,ename,job from emp where 1=2;
    create table emp2 as select empno,ename,deptno from emp where 1=2;
 ```
-**无条件insert:**
+**无条件insert：**
 ```
 insert all
    into emp1(empno,ename,job) values (empno,ename,job)
@@ -622,6 +622,49 @@ select * from emp2;
       8 rows selected
 ```
 --------------------------------------------------------------------------------------------------
+   因为没有加条件，所以会同时向两个表中插入数据，且两个表中插入的条数一样。
    
-
+**有条件insert all：**
+```
+   delete emp1;
+   delete emp2;
+   insert all
+      when job in ('salesman','manager') then
+      into emp1(empno,ename,job) values (empno,ename,job)
+      when deptno in ('20','30') then
+      into emp2(empno,ename,deptno) values (empno,ename,deptno)
+   select empno,ename,job,deptno from emp;
+   
+   
+   select * from emp1;
+   
+   empno       ename       job
+  --------------------------------
+   7499        allen       salesman
+   7521        ward        salesman
+   7566        jones       manager
+   7654        martin      salesman
+   7698        blake       manager
+   7782        clark       manager
+   7844        turner      salesman
+   
+  7 rows selected
+  
+  select * from emp2;
+   empno       ename       deptno
+  --------------------------------
+   7369        smith       20
+   7499        allen       30
+   7521        ward        30
+   7566        jones       20
+   7654        martin      30
+   7698        blake       30
+   7788        scott       20
+   7844        turner      30
+   7876        adams       20
+   7900        jaems       30
+   7902        ford        20
+   
+   11 rows selected
+```
 [回到顶部](#oracle总结笔记)
