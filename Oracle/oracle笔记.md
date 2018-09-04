@@ -708,7 +708,7 @@ select * from emp2;
    5 row selected
 ```
 
-**insert first语句中，当第一个表符合条件后，第二个表将不再插入对应的行，表mep2中不再有表emp1相同的数据‘empno=7654’，这就是insert first与insert all的不同之处**
+insert first语句中，当第一个表符合条件后，第二个表将不再插入对应的行，表mep2中不再有表emp1相同的数据‘empno=7654’，这就是insert first与insert all的不同之处
 
 --------------------------------------------------------------------------------------------------
 
