@@ -621,7 +621,6 @@ select * from emp2;
       
       8 rows selected
 ```
---------------------------------------------------------------------------------------------------
    因为没有加条件，所以会同时向两个表中插入数据，且两个表中插入的条数一样。
    
 **有条件insert all：**
@@ -667,4 +666,51 @@ select * from emp2;
    
    11 rows selected
 ```
+   当增加条件后，就会按条件插入。如empno=1654等数据在两个表中都有
+   
+**insert first就不一样：**
+```
+   delete emp1;
+   delete emp2;
+   /*有条件insert first*/
+   insert first
+      when job in ('salesman','manager') then
+      into emp1(empno,ename,job) values (empno,ename,job)
+      when deptno in ('20','30') then
+      into emp2(empno,ename,deptno) values (empno,ename,deptno)
+   select empno,ename,job,deptno from emp;
+   
+   select * from emp1;
+   
+   empno          ename          job
+  -----------------------------------------
+   7499           allen          salesman
+   7521           ward           salesman
+   7566           jones          manager
+   7654           martin         salesman
+   7698           blake          manager
+   7782           clark          manager
+   7844           turner         salesman
+   
+   7 rows selected
+   
+   
+   select * from emp2;
+   
+   empno          ename          deptno
+  -----------------------------------------
+   7369           smith          20
+   7788           scott          20
+   7876           adams          20
+   7900           james          30
+   7902           ford           20
+   
+   5 row selected
+```
+
+**insert first语句中，当第一个表符合条件后，第二个表将不再插入对应的行，表mep2中不再有表emp1相同的数据‘empno=7654’，这就是insert first与insert all的不同之处**
+
+--------------------------------------------------------------------------------------------------
+
+
 [回到顶部](#oracle总结笔记)
