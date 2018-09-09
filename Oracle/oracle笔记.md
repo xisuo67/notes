@@ -772,6 +772,37 @@ select '天天向上' as 汉字,'TTXS' as 首拼 from dual;
   |向|X
   |上|S
   
+  在拆分之前，我们先看一个connect by 子句：
+  ```
+   select level from dual connect by level <=4;
+   
+   level
+---------------------
+   1
+   2
+   3
+   4
+   
+4 rows selected
+  ```
+其中，connect by 是树形查询中的一个子句，后面的level是一个“伪列”，表示树形中的级别层次，通过level<=4循环4次，就生成4行上面所显示的数据了。
+那么我们就可以通过connect by子句把v循环显示4行，并给出定位标识level；
+```
+select v.汉字,v.首拼,level from v connect by level<=length(v.汉字);
+
+汉字          首拼             level
+天天向上      TTXS              1
+天天向上      TTXS              2
+天天向上      TTXS              3
+天天向上      TTXS              4
+
+4 rows selected
+```
+根据上面的数据，可以通过函数substr(v.汉字,level,?)得到需要的结果：
+```
+
+```
+
 ----------------------------------------------------------------------------------------------------
 
 
