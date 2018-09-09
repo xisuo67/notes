@@ -741,6 +741,17 @@ insert first语句中，当第一个表符合条件后，第二个表将不再�
    周三        狗样，神气活现
    周四        鸟样，向往明天
    周五        花样，愿你快乐像花儿一样
+   
+   5 rows selected
+```
+可以看到，转置insert的实现就是把不同列的数据插入到筒仪表的不同行中，转置insert的等价语句如下：
+```
+insert into t2(d,des)
+select '周一' d1 from t1 union all
+select '周二' d2 from t1 union all
+select '周三' d3 from t1 union all
+select '周四' d4 from t1 union all
+select '周五' d5 from t1;
 ```
   
 --------------------------------------------------------------------------------------------------
