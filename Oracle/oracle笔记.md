@@ -709,7 +709,39 @@ select * from emp2;
 ```
   
 
-insert first语句中，当第一个表符合条件后，第二个表将不再插入对应的行，表mep2中不再有表emp1相同的数据‘empno=7654’，这就是insert first与insert all的不同之处  
+insert first语句中，当第一个表符合条件后，第二个表将不再插入对应的行，表mep2中不再有表emp1相同的数据‘empno=7654’，这就是insert first与insert all的不同之处。
+
+转置insert与其说是一个分类，不如说是insert all的一个用法。
+```
+   drop table t1;
+   drop table t2;
+   create table t2 (d varchar2(10),des varchar2(50));
+   create table t1 as
+   select '熊样,精神不佳' as d1,
+   '猫样，温驯听话' as d2,
+   '狗样，神气活现' as d3,
+   '鸟样，向往明天' as d4,
+   '花样，愿你快乐像花儿一样' as d5
+   from dual;
+   /*转置 insert*/
+   insert all
+   into t2(d,des) values('周一',d1)
+   into t2(d,des) values('周二',d2)
+   into t2(d,des) values('周三',d3)
+   into t2(d,des) values('周四',d4)
+   into t2(d,des) values('周五',d5)
+   select d1,d2,d3,d4,d5 from t1;
+   
+   
+   select * from t2;
+    d          des          
+  -------------------------
+   周一        熊样,精神不佳         
+   周二        猫样，温驯听话   
+   周三        狗样，神气活现
+   周四        鸟样，向往明天
+   周五        花样，愿你快乐像花儿一样
+```
   
 --------------------------------------------------------------------------------------------------
 
