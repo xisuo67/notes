@@ -800,8 +800,18 @@ select v.汉字,v.首拼,level from v connect by level<=length(v.汉字);
 ```
 根据上面的数据，可以通过函数substr(v.汉字,level,?)得到需要的结果：
 ```
-
+select v.汉字,
+   v.首拼,
+   levecl,
+   substr(v.汉字,level,1) as 汉字拆分,
+   substr(v.首拼,level,1) as 首拼拆分,
+   'substr(''' || v.汉字||''','||level||',1)' as fun
+   from v
+   connect by level<=length(v.汉字);
 ```
+|汉字|首拼|level|汉字拆分|首拼拆分|fun|
+|--|--|--|--|--|--|
+天天向上|TTXS|1|天|T|substr('天天向上',1,1)
 
 ----------------------------------------------------------------------------------------------------
 
