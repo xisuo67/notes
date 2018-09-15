@@ -824,7 +824,7 @@ select v.汉字,
    select 'g'' day mate' qmarks from dual union all
    2 select 'beavers''teeth' from dual union all
    3 select ''''   from dual;
-   
+    
    qmarks
 -------------------------
    g'day mate
